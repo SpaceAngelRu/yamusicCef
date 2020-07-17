@@ -24,7 +24,7 @@ namespace CefSharpWf.ChromeExt.Filters
             this.dictionary = dictionary;
         }
 
-    FilterStatus IResponseFilter.Filter(Stream dataIn, out long dataInRead, Stream dataOut, out long dataOutWritten)
+		FilterStatus IResponseFilter.Filter(Stream dataIn, out long dataInRead, Stream dataOut, out long dataOutWritten)
         {            
             if (dataIn == null)
             {
@@ -56,7 +56,11 @@ namespace CefSharpWf.ChromeExt.Filters
 
             StreamReader reader = new StreamReader(dataIn, Encoding.UTF8);
             string dataInStr = reader.ReadToEnd();
-            
+
+            Console.WriteLine($"=====================================================================\n" +
+                              $"{dataInStr}" +
+                              $"=====================================================================\n");
+
             foreach (var item in dictionary)
             {
                 dataInStr = Regex.Replace(dataInStr, item.Key, item.Value, RegexOptions.IgnoreCase);                  

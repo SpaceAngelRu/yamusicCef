@@ -61,6 +61,11 @@ namespace CefSharpWf.ChromeExt
                                                 if (element.Type == PostDataElementType.Bytes)
                                                 {
                                                     var body = element.GetBody(charSet);
+
+                                                    Console.WriteLine($"==POSTPOSTPOST=====================================================================POSTPOSTPOST==\n" +
+                                                                      $"{body}" +
+                                                                      $"==POSTPOSTPOST=====================================================================POSTPOSTPOST==\n");
+
                                                     body = Regex.Replace(body, rule.SearchPattern, rule.ReplaceStr, RegexOptions.IgnoreCase);
                                                     element.Bytes = Encoding.UTF8.GetBytes(body);
 

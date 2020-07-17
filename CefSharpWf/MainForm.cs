@@ -23,11 +23,7 @@ namespace CefSharpWf
         private const string CONFIG_PATH = "config";
         private const string RULES_FILENAME = "rules.json";
 
-        //private const string START_URL = "https://gisauto.ru/search?q=3087-LF-PCS-MS";
-        private const string START_URL = "https://yandex.ru";
-
-        //private ChromiumWebBrowser _chromeBrowser;
-        //LifespanHandler _lifespanHandler = new LifespanHandler();
+        private const string START_URL = "https://music.yandex.ru/home";
 
         private List<HttpRule> _httpRules;
 
@@ -85,7 +81,8 @@ namespace CefSharpWf
             string exeLocation = AppDomain.CurrentDomain.BaseDirectory;
             CefSettings cfsettings = new CefSettings
             {
-                UserAgent = "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko",
+                //UserAgent = "Mozilla/5..0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko",
+                UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
                 CachePath = exeLocation + CACHE_PATH,
             };
 
@@ -93,12 +90,9 @@ namespace CefSharpWf
 
             cfsettings.CefCommandLineArgs.Add("disable-web-security", "true");
 
-            //cfsettings.CefCommandLineArgs.Add("proxy-bypass-list", tecDocConfig.ProxyBypassList);
-            //cfsettings.CefCommandLineArgs.Add("proxy-server", tecDocConfig.ProxyServer);
 
             if (!Cef.IsInitialized)
                 Cef.Initialize(cfsettings);
-            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -246,7 +240,6 @@ namespace CefSharpWf
             }
             return null;
         }
-
         
 
         private void CefShutdown()
